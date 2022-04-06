@@ -1,28 +1,28 @@
 // Kiến thức & kỹ năng áp dụng: Hàm, biến, mảng, điều kiện if...else, vòng lặp for, sử dụng tag audio
 const MUSIC_LIST = [
     {
-        "img": "./public/images/Faded.jpg",
+        "img": "./images/Faded.jpg",
         "name": "Faded",
         "artist": "Alan Walker",
-        "music": "./public/musics/Fade.mp3"
+        "music": "./musics/Fade.mp3"
     },
     {
-        "img": "./public/images/Lily.png",
+        "img": "./images/Lily.png",
         "name": "Lily",
         "artist": "Alan Walker",
-        "music": "./public/musics/Lily.mp3"
+        "music": "./musics/Lily.mp3"
     },
     {
-        "img": "./public/images/TheNights.jpg",
+        "img": "./images/TheNights.jpg",
         "name": "The Night",
         "artist": "Avicii (Cover by AngieN.)",
-        "music": "./public/musics/TheNights.mp3"
+        "music": "./musics/TheNights.mp3"
     },
     {
-        "img": "./public/images/VuHoiHoaTrang.jpg",
+        "img": "./images/VuHoiHoaTrang.jpg",
         "name": "假面舞会",
         "artist": "很美味",
-        "music": "./public/musics/VuHoiHoaTrang.mp3"
+        "music": "./musics/VuHoiHoaTrang.mp3"
     }
 ]
 
@@ -73,6 +73,7 @@ function reset() {
     currentTime.textContent = "00:00";
     totalDuration.textContent = "00:00";
     seekSlider.value = 0;
+    volumeSlider.value = 10;
 }
 
 function setUpdate() {
@@ -128,7 +129,8 @@ function playTrack() {
     isPlaying = true;
     trackArt.classList.add('rotate');
     wave.classList.add('loader');
-    playPauseTrack.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+    playPauseTrack.innerHTML = '<i class="fa fa-pause-circle fa-3x"></i>';
+    setVolume();
 }
 
 function pauseTrack() {
@@ -136,14 +138,18 @@ function pauseTrack() {
     isPlaying = false;
     trackArt.classList.remove('rotate');
     wave.classList.remove('loader');
-    playPauseTrack.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+    playPauseTrack.innerHTML = '<i class="fa fa-play-circle fa-3x"></i>';
 }
 
 function randomBackgroundColor() {
     var colorOne = populate();
     var colorTwo = populate();
     document.body.style.background = 'linear-gradient(to right,' + colorOne + ',' + colorTwo + ")";
+    document.querySelector(".seek_slider").style.background = 'linear-gradient(to right,' + colorOne + ',' + colorTwo + ")";
+    document.querySelector(".volume_slider").style.background = 'linear-gradient(to right,' + colorOne + ',' + colorTwo + ")";
 }
+
+
 
 function populate() {
     var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'];
